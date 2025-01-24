@@ -52,4 +52,28 @@ public class BasePage {
     public static void closeBrowser(){
         driver.quit();
     }
-}
+
+    public void write(String locator, String keysToSend){
+        Find(locator).clear();
+        Find(locator).sendKeys(keysToSend);
+    }
+
+    public void goToLinkText(String linkText){
+        driver.findElement(By.linkText(linkText)).click();
+    }
+
+    public void submitElement(String locator){
+        Find(locator).submit();
+    }
+
+    public void selectNthElement(String locator, int index){
+        List<WebElement> results = driver.findElements(By.xpath(locator));
+        results.get(index).click();
+    }
+
+    public String textFromElement(String locator){
+        return Find(locator).getText();
+    }
+
+   
+}      
